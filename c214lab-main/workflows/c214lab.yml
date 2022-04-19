@@ -1,0 +1,23 @@
+name: C214lab
+
+on: 
+  push:
+    branches: [exercicioTestesUnitarios]
+  pull_request: 
+    branches: [exercicioTestesUnitarios]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Node 16.14.2
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.14.2'
+        distribution: 'node'
+        cache: package.json
+    - name: Test with Jest
+      run: npm test    
